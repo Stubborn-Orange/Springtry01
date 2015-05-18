@@ -16,6 +16,7 @@ import com.ffk.dao.ExampleBean;
 import com.ffk.dao.JDBCDataSource;
 import com.ffk.dao.UserDao;
 import com.ffk.entity.User;
+import com.ffk.service.UserService;
 import com.sun.xml.internal.ws.api.server.SDDocument;
 
 public class TestCase {
@@ -49,8 +50,8 @@ public class TestCase {
 	public void testMyUserDao(){
 		String conf = "applicationContext.xml";
 		ApplicationContext ac = new ClassPathXmlApplicationContext(conf);
-		UserDao userDao = ac.getBean("userDao" , UserDao.class);
-		User tom = userDao.findByName("Tom");
+		UserService userService = ac.getBean("userService",UserService.class);
+		User tom = userService.login("Tom","123");
 		System.out.println(tom);
 	}
 }
