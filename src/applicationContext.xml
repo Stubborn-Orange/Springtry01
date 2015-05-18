@@ -30,12 +30,4 @@
 		<property name="user" value="root"></property>
 		<property name="pwd" value="752638140"></property>
 	</bean>
-	
-	<!-- 构造器注入 -->
-	<bean id="userDao" class="com.ffk.dao.MyUserDao">
-		<constructor-arg index="0" ref="dataSource" />
-	</bean>
-	
-	<!-- 按照类中自动注入属性 -->
-	<bean id="userService" class="com.ffk.service.UserService" autowire="byType"></bean>
 </beans>

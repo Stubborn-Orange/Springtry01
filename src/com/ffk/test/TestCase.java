@@ -14,8 +14,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.ffk.dao.ExampleBean;
 import com.ffk.dao.JDBCDataSource;
-import com.ffk.dao.UserDao;
-import com.ffk.entity.User;
 import com.sun.xml.internal.ws.api.server.SDDocument;
 
 public class TestCase {
@@ -43,14 +41,14 @@ public class TestCase {
 //		ExampleBean bean2 = ac.getBean("exampleBean", ExampleBean.class);
 //		System.out.println(bean1 == bean2);
 //	}
-//	
-
+	
 	@Test
-	public void testMyUserDao(){
+	public void testJDBC() throws SQLException{
 		String conf = "applicationContext.xml";
 		ApplicationContext ac = new ClassPathXmlApplicationContext(conf);
-		UserDao userDao = ac.getBean("userDao" , UserDao.class);
-		User tom = userDao.findByName("Tom");
-		System.out.println(tom);
+		System.out.println(ac);
+		JDBCDataSource ds = ac.getBean("dataSource" , JDBCDataSource.class);
+		Connection conn = ds.getConnection();
+		System.out.println(conn);
 	}
 }
